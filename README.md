@@ -59,6 +59,6 @@ val: images/val
 test:
 
 nc: 5
-names: ['bicycle', 'car', 'motorcycle', 'bus', 'truck']
+names: ['others', 'car', 'van', 'bus']
 ```
 
