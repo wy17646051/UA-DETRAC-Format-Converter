@@ -3,7 +3,7 @@
 
 Convert [UA-DETRAC](http://detrac-db.rit.albany.edu/Detection) dataset to the dataset format supported by [YOLOv5](https://github.com/ultralytics/yolov5)
 
-## 快速开始 Quick start
+## 快速开始 Quick Start
 
 首先下载数据集 [UA-DETRAC](http://detrac-db.rit.albany.edu/Detection) 到在你希望生成 YOLOv5 所支持格式数据集的根目录下，并将 process.py 文件放在该目录下。例如：
 
