@@ -2,6 +2,7 @@ import argparse
 import os
 import shutil
 from xml.dom.minidom import parse
+from tqdm import tqdm
 
 
 def create_labels(root_node, labels_root):
@@ -58,7 +59,7 @@ def create_labels(root_node, labels_root):
 def yolo_img_train(opt):
     # train img
     os.makedirs('./images/train')
-    for video_name in os.listdir(opt.img_train):
+    for video_name in tqdm(os.listdir(opt.img_train)):
         if 'MVI' in video_name:
             stride = int(1.0 / opt.sample)
             for i, img_name in enumerate(os.listdir(os.path.join(opt.img_train, video_name))):
@@ -72,7 +73,7 @@ def yolo_img_train(opt):
 def yolo_img_val(opt):
     # val img
     os.makedirs('./images/val')
-    for video_name in os.listdir(opt.img_val):
+    for video_name in tqdm(os.listdir(opt.img_val)):
         if 'MVI' in video_name:
             stride = int(1.0 / opt.sample)
             for i, img_name in enumerate(os.listdir(os.path.join(opt.img_val, video_name))):
@@ -89,14 +90,14 @@ def gen_yolo_dataset(opt):
 
     # train label
     os.makedirs('./labels/train')
-    for video_xml in os.listdir(opt.lbl_train):
+    for video_xml in tqdm(os.listdir(opt.lbl_train)):
         if '.xml' in video_xml:
             create_labels(parse(os.path.join(opt.lbl_train, video_xml)).documentElement, './labels/train/')
     print('YOLO training set label has been generated.')
 
     # val label
     os.makedirs('./labels/val')
-    for video_xml in os.listdir(opt.lbl_val):
+    for video_xml in tqdm(os.listdir(opt.lbl_val)):
         if '.xml' in video_xml:
             create_labels(parse(os.path.join(opt.lbl_val, video_xml)).documentElement, './labels/val/')
     print('YOLO validation set label has been generated.')
